@@ -817,91 +817,66 @@
         {
           "alias": false,
           "_styles": {
-            "padding-top": "(@paddingTop * 1rem)",
-            "padding-bottom": "(@paddingBottom * 1rem)",
-            "& when (@bg-type = \"color\")": {
+            "& when not (@fullScreen)": {
+              "padding-top": "(@paddingTop * 1rem)",
+              "padding-bottom": "(@paddingBottom * 1rem)"
+            },
+            "& when (@bg-type = 'color')": {
               "background-color": "@bg-value"
             },
-            "& when (@bg-type = \"image\")": {
-              "background-image": "url(@bg-value)",
-              "& when (@overlay)": {
-                ".mbr-overlay": {
-                  "background": "@overlayColor",
-                  "opacity": "@overlayOpacity"
-                }
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            ".mbr-fallback-image.disabled": {
+              "display": "none"
+            },
+            ".mbr-fallback-image": {
+              "display": "block",
+              "background-size": "cover",
+              "background-position": "center center",
+              "width": "100%",
+              "height": "100%",
+              "position": "absolute",
+              "top": "0",
+              "& when (@bg-type = 'video')": {
+                "background-image": "url(@fallBackImage)"
               }
             },
-            "overflow": "hidden",
-            ".row": {
-              "position": "relative",
-              "display": "flex",
-              "flex-wrap": "nowrap",
-              "align-items": "center",
-              "justify-content": "space-between",
-              "padding": "26px 38px",
-              "@media (max-width: 1023px)": {
-                "padding": "0"
-              }
-            },
-            ".item-text": {
-              "position": "relative",
-              "z-index": "2",
-              "max-width": "700px",
-              "flex-shrink": "1",
-              "padding": "0 !important",
-              "@media (max-width: 1023px)": {
-                "max-width": "100%"
-              }
-            },
-            ".item-title": {
-              "position": "relative",
+            ".mbr-section-title": {
               "color": "#fa2626",
-              "&:after": {
-                "content": "\"\"",
-                "display": "block",
-                "margin": "20px auto",
-                "width": "30px",
-                "height": "1px",
-                "background-color": "currentColor"
-              }
+              "a": {
+                "pointer-events": "none"
+              },
+              "text-align": "center"
             },
-            ".mbr-text": {
-              "color": "#e3ebf3"
+            ".mbr-section-subtitle": {
+              "margin-top": "40px",
+              "color": "#6c7a88",
+              "@media (max-width: 1399px)": {
+                "margin-top": "30px"
+              },
+              "@media (max-width: 767px)": {
+                "margin-top": "20px"
+              }
             },
             ".mbr-section-btn": {
-              ".btn": {
-                "min-width": "260px",
-                "min-height": "60px"
+              "margin-top": "30px",
+              "@media (max-width: 767px)": {
+                "margin-top": "20px"
               }
             },
-            ".item-img": {
-              "flex-shrink": "1.5",
-              "max-width": "255px",
-              "width": "100%",
-              "overflow": "hidden",
-              "border-radius": "5px",
-              "padding": "0 !important",
-              "@media (max-width: 1023px)": {
-                "display": "none"
-              },
-              "&-1": {
-                "transform": "rotate(-15deg)"
-              },
-              "&-2": {
-                "transform": "rotate(15deg)"
-              },
-              "img": {
-                "width": "100%",
-                "aspect-ratio": "(3 / 4)",
-                "object-fit": "cover"
-              }
+            ".mbr-section-subtitle, .mbr-section-btn": {
+              "color": "#ffffff",
+              "text-align": "center"
             }
           },
-          "_name": "afeatures4",
+          "_name": "aarticle1",
           "_sourceTheme": "homem5",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"features4 homem5\" group=\"Features\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" name=\"showCardTitle\" title=\"Title\" checked>\n        <input type=\"checkbox\" name=\"showText\" title=\"Text\" checked>\n        <input type=\"checkbox\" name=\"showButtons\" title=\"Buttons\" checked>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" required>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background1.jpg\" selected>\n            <input type=\"color\" title=\"Color\" value=\"#1a1e21\">\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#1a1e21\" condition=\"overlay && bg.type == 'image'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.1\" condition=\"overlay && bg.type == 'image'\">\n    </mbr-parameters>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type !== 'color'\"></div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row\">\n            <div class=\"item-img item-img-1\">\n                <img src=\"@PROJECT_PATH@/assets/images/amor-153.webp\" alt=\"Mobirise Website Builder\">\n            </div>\n            <div class=\"item-text\">\n                <h5 class=\"item-title mbr-fonts-style mb-0 align-center\" mbr-theme-style=\"display-2\" data-app-selector=\".item-title\" mbr-if=\"showCardTitle\">\n                    Somos Expertos</h5>\n                <p class=\"mbr-text mbr-fonts-style mt-2 mb-0 align-center\" mbr-if=\"showText\" mbr-theme-style=\"display-4\" data-app-selector=\".mbr-text\">Usamos Poderosas técnicas de magia roja y blanca para recuperar a tu ser querido sin hacerle daño, tenemos más de 30 años de experiencia y miles de clientes satisfechos.<br><br><br></p>\n                <div class=\"mbr-section-btn item-footer align-center mt-3\" mbr-if=\"showButtons\" data-toolbar=\"-mbrBtnMove,-mbrBtnAdd\" mbr-buttons mbr-theme-style=\"display-7\"><a class=\"btn btn-primary item-btn\" data-app-placeholder=\"Type Text\" href=\"https://contacto.guru/Jh1\" target=\"_blank\"><span class=\"fa fa-whatsapp mbr-iconfont mbr-iconfont-btn\"></span>\n                        CONSULTA GRATIS</a></div>\n            </div>\n            <div class=\"item-img item-img-2\">\n                <img src=\"@PROJECT_PATH@/assets/images/amor-113.webp\" alt=\"Mobirise Website Builder\">\n            </div>\n        </div>\n    </div>\n</section>",
-          "_cid": "tPEwjYjGOc",
-          "_anchor": "afeatures4-t",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"article1 homem5\" group=\"Article\" data-bg-video=\"{{bg.type == 'video'&&bg.value.url}}\" mbr-class=\"{\n    'mbr-fullscreen': fullScreen,\n    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" step=\"1\" value=\"11\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\" checked>\n        <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\" checked>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/background1.jpg\" selected>\n            <input type=\"color\" title=\"Color\" value=\"#1a1e21\">\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"@PROJECT_PATH@/assets/images/background1.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#1a1e21\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.7\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"title col-md-12 col-lg-{{textWidth}}\">\n                <h3 class=\"mbr-section-title mbr-fonts-style mb-0\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\"><br>Somos Expertos<br></h3>\n                <h4 class=\"mbr-section-subtitle mbr-fonts-style mb-0\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle, .mbr-section-btn\" mbr-theme-style=\"display-5\">Usamos Poderosas técnicas de magia roja y blanca para recuperar a tu ser querido sin hacerle daño, tenemos más de 30 años de experiencia y miles de clientes satisfechos.</h4>\n                <div class=\"mbr-section-btn\" mbr-if=\"showButtons\" mbr-buttons mbr-theme-style=\"display-4\"><a class=\"btn btn-primary\" href=\"https://contacto.guru/Jh1\" data-app-placeholder=\"Type Text\" target=\"_blank\"><span class=\"fa fa-whatsapp mbr-iconfont mbr-iconfont-btn\"></span>CONSULTA GRATIS POR WHATSAPP</a></div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "ty263QN2eV",
+          "_anchor": "call",
+          "_PHPplaceholders": [],
+          "_JSplaceholders": [],
           "_protectedParams": [],
           "_global": false,
           "_once": false,
@@ -1049,70 +1024,6 @@
           "_anchor": "afeatures8-1",
           "_isUserblock": true,
           "_cid": "tMEAKbDy40",
-          "_protectedParams": [],
-          "_global": false,
-          "_once": false,
-          "_params": {}
-        },
-        {
-          "alias": false,
-          "_styles": {
-            "& when not (@fullScreen)": {
-              "padding-top": "(@paddingTop * 1rem)",
-              "padding-bottom": "(@paddingBottom * 1rem)"
-            },
-            "& when (@bg-type = 'color')": {
-              "background-color": "@bg-value"
-            },
-            "& when (@bg-type = 'image')": {
-              "background-image": "url(@bg-value)"
-            },
-            ".mbr-fallback-image.disabled": {
-              "display": "none"
-            },
-            ".mbr-fallback-image": {
-              "display": "block",
-              "background-size": "cover",
-              "background-position": "center center",
-              "width": "100%",
-              "height": "100%",
-              "position": "absolute",
-              "top": "0",
-              "& when (@bg-type = 'video')": {
-                "background-image": "url(@fallBackImage)"
-              }
-            },
-            ".mbr-section-title": {
-              "color": "#ffffff",
-              "a": {
-                "pointer-events": "none"
-              },
-              "text-align": "center"
-            },
-            ".mbr-section-subtitle": {
-              "margin-top": "40px",
-              "color": "#6c7a88",
-              "@media (max-width: 1399px)": {
-                "margin-top": "30px"
-              },
-              "@media (max-width: 767px)": {
-                "margin-top": "20px"
-              }
-            },
-            ".mbr-section-btn": {
-              "margin-top": "30px",
-              "@media (max-width: 767px)": {
-                "margin-top": "20px"
-              }
-            }
-          },
-          "_name": "aarticle1",
-          "_sourceTheme": "homem5",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"article1 homem5\" group=\"Article\" data-bg-video=\"{{bg.type == 'video'&&bg.value.url}}\" mbr-class=\"{\n    'mbr-fullscreen': fullScreen,\n    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" step=\"1\" value=\"11\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\">\n        <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\" checked>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/background1.jpg\" selected>\n            <input type=\"color\" title=\"Color\" value=\"#1a1e21\">\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"@PROJECT_PATH@/assets/images/background1.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#1a1e21\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.7\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"title col-md-12 col-lg-{{textWidth}}\">\n                <h3 class=\"mbr-section-title mbr-fonts-style mb-0\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-5\">\"Recuperar a tu ser amado puede ser un proceso difícil, pero con la ayuda de nuestros maestros en amarres de amor, se vuelve más posible.<br><br>&nbsp;¡Contáctanos y comienza tu viaje de amor hoy!<br><br></h3>\n                <h4 class=\"mbr-section-subtitle mbr-fonts-style mb-0\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle, .mbr-section-btn\" mbr-theme-style=\"display-5\">\n                    Proin sagittis nisl rhoncus mattis vulputate sapien nec sagittis aliquam malesuada.\n                </h4>\n                <div class=\"mbr-section-btn\" mbr-if=\"showButtons\" mbr-buttons mbr-theme-style=\"display-4\"><a class=\"btn btn-primary\" href=\"https://contacto.guru/Jh1\" data-app-placeholder=\"Type Text\" target=\"_blank\"><span class=\"fa fa-whatsapp mbr-iconfont mbr-iconfont-btn\"></span>CONSULTA GRATIS POR WHATSAPP</a></div>\n            </div>\n        </div>\n    </div>\n</section>",
-          "_cid": "ty263QN2eV",
-          "_anchor": "call",
-          "_PHPplaceholders": [],
-          "_JSplaceholders": [],
           "_protectedParams": [],
           "_global": false,
           "_once": false,
